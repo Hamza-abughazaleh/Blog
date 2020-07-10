@@ -1,0 +1,40 @@
+{% extends "main/layout/layout.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<section class="testimonials text-center">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Article Detail Page</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="mt-4">{{ article_detail.title }}</h2>
+                <h1> Total likes </h1> <h2 id="total_like">{{ total_like }}</h2>
+                {% if user.is_authenticated %}
+                    <button class="btn btn-primary" data-article-id="{{ article_detail.id }}">like</button>
+                    <div class="alert alert-danger d-none" id="like_error" role="alert">
+                    </div>
+                {% else %}
+                    <h6>{% trans 'You must to' %} <a href="{% url 'user:user_login' %}"> {% trans 'login' %} </a>
+                        {% trans 'if you want to like this article' %} </h6>
+                {% endif %}
+                <p>{{ article_detail.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block js %}
+    <script>
+        var likeArticleURL = "{% url 'like_article' pk=article_detail.pk %}"
+        var csrfmiddlewaretoken = '{{ csrf_token }}'
+    </script>
+    <script src="{% static "js/like_article.js" %}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

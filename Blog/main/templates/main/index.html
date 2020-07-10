@@ -1,0 +1,32 @@
+{% extends "main/layout/layout.html" %}
+{% load static %}
+{% load i18n %}
+{#{% load crispy_forms_tags %}#}
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+<section class="testimonials text-center ">
+    <div class="container">
+        <h2 class="mb-5">{% trans "latest Articles" %}</h2>
+        <div class="row">
+            {% for article in article_list %}
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <small class="text-muted">{{ article.created_date }}</small>
+                                <small class="text-muted {% if LANGUAGE_CODE == 'en' %}pull-right{% else %}pull-left{% endif %}">
+                                    {{ article.title }}</small>
+                            </p>
+                            <h5 class="card-title pt-2">{{ article.description|truncatechars:200 }}</h5>
+                            <a class="btn btn-primary" href="{% url 'article_detail' pk=article.pk %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- /container -->
+
+{% endblock %}

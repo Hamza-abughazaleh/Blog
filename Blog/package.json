@@ -1,0 +1,12 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "Base django project structure",
+  "dependencies": {
+    "@popperjs/core": "^2.4.4",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "node-less": "^1.0.0",
+  },
+  "devDependencies": {}
+}
