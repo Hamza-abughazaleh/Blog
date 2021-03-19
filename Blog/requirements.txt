@@ -3,7 +3,7 @@ Django==3.0.8
 django-appconf==1.0.4
 django-compressor==2.4
 django-npm==1.0.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 psycopg2==2.8.5
 pytz==2020.1
 rcssmin==1.0.6
